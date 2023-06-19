@@ -1,21 +1,16 @@
-package com.example.backend.entity;
+package com.example.backend.entity.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "emailMessage")
-public class EmailMessage {
-    @Id
+public class EmailMessagePojo {
     private int edNo;
     private long edAuthor;
     private long edReceiver;
