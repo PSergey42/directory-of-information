@@ -1,6 +1,7 @@
 package com.example.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,14 +13,18 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "bicDirectoryEntry")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BICDirectoryEntry {
     @Id
+    @XmlAttribute(name = "BIC")
     private int BIC;
-    private String changeType;
-    @OneToOne
+    @OneToOne(mappedBy = "bicDirectoryEntry")
+    @XmlElement(name = "ParticipantInfo", namespace="urn:cbr-ru:ed:v2.0")
     private ParticipantInfo participantInfo;
     @OneToMany(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
+    @XmlElement(name="SWBICS", namespace="urn:cbr-ru:ed:v2.0")
     private List<SWBIC> swBICs;
     @OneToMany(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
+    @XmlElement(name="Accounts", namespace="urn:cbr-ru:ed:v2.0")
     private List<Account> accounts;
 }

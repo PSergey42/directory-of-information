@@ -1,6 +1,10 @@
 package com.example.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlTransient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +14,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "SWBIC")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SWBIC {
     @Id
+    @XmlAttribute(name = "SWBIC")
     private String swBIC;
+    @XmlAttribute(name = "DefaultSWBIC")
     private boolean defaultSWBIC;
-    @ManyToOne
+    @XmlTransient
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bicDirectoryEntry_id", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
     private BICDirectoryEntry bicDirectoryEntry;
 }

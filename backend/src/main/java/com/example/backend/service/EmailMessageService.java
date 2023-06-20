@@ -16,9 +16,21 @@ public class EmailMessageService {
     }
 
     public List<EmailMessagePojo> findAll() {
-        /*List<EmailMessage> list = List.of(new EmailMessage(1,2, new Date(), "ff", "fdd", new Date(), "", new Date(),
-                List.of(new BICDirectoryEntry(23, 12))));
-        return list.stream().map(EmailMessageMapper.INSTANCE::fromEntity).toList();*/
         return null;
+    }
+
+    public EmailMessagePojo getEmailMessageByNumber(long number) {
+        return null;
+    }
+
+    public EmailMessagePojo addEmailMessage(EmailMessagePojo emailMessagePojo) {
+        return null;
+    }
+
+    public EmailMessagePojo updateEmailMessage(EmailMessagePojo emailMessagePojo) {
+        return null;
+    }
+
+    public void deleteEmailMessage(long number) {
     }
 }

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class EmailMessagePojo {
     private int edNo;
     private long edAuthor;
