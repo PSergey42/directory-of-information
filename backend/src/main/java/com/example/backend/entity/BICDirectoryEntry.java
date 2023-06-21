@@ -16,9 +16,12 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BICDirectoryEntry {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlTransient
+    private long id;
     @XmlAttribute(name = "BIC")
-    private int BIC;
-    @OneToOne(mappedBy = "bicDirectoryEntry")
+    private int bic;
+    @OneToOne(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
     @XmlElement(name = "ParticipantInfo", namespace="urn:cbr-ru:ed:v2.0")
     private ParticipantInfo participantInfo;
     @OneToMany(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
@@ -27,4 +30,8 @@ public class BICDirectoryEntry {
     @OneToMany(mappedBy = "bicDirectoryEntry", cascade = CascadeType.ALL)
     @XmlElement(name="Accounts", namespace="urn:cbr-ru:ed:v2.0")
     private List<Account> accounts;
+    @XmlTransient
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "emailMessage_id", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+    private EmailMessage emailMessage;
 }

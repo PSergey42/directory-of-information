@@ -13,11 +13,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "emailMessage")
+@Table(name = "email_message")
 @XmlRootElement(name = "ED807", namespace="urn:cbr-ru:ed:v2.0")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class EmailMessage {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlTransient
+    private long id;
     @XmlAttribute(name = "EDNo")
     private int edNo;
     @XmlAttribute(name = "EDAuthor")
@@ -36,7 +39,7 @@ public class EmailMessage {
     private Date businessDay;
     @XmlAttribute(name = "DirectoryVersion")
     private int directoryVersion;
-    @Transient
+    @OneToMany(mappedBy = "emailMessage", cascade = CascadeType.ALL)
     @XmlElement(name = "BICDirectoryEntry", namespace="urn:cbr-ru:ed:v2.0")
     private List<BICDirectoryEntry> bicDirectoryEntryList;
 

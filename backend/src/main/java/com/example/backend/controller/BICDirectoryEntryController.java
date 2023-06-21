@@ -22,23 +22,23 @@ public class BICDirectoryEntryController {
         return bicDirectoryEntryService.findAll();
     }
 
-    @GetMapping("/{bic}")
-    public BICDirectoryEntryPojo getBICDirectoryEntryByBIC(@PathVariable("bic") int bic) {
-        return bicDirectoryEntryService.getBICDirectoryEntryByBIC(bic);
+    @GetMapping("/{id}")
+    public BICDirectoryEntryPojo getBICDirectoryEntryByBIC(@PathVariable("id") long id) {
+        return bicDirectoryEntryService.getBICDirectoryEntryByBIC(id);
     }
 
-    @PostMapping
-    public BICDirectoryEntryPojo addBICDirectoryEntry(@RequestBody BICDirectoryEntryPojo bicDirectoryEntryPojo){
-        return bicDirectoryEntryService.addBICDirectoryEntry(bicDirectoryEntryPojo);
+    @PostMapping("/{id}")
+    public BICDirectoryEntryPojo addBICDirectoryEntry(@RequestBody BICDirectoryEntryPojo bicDirectoryEntryPojo, @PathVariable("id") long emailMessage_id){
+        return bicDirectoryEntryService.addBICDirectoryEntry(bicDirectoryEntryPojo, emailMessage_id);
     }
 
-    @PutMapping
-    public BICDirectoryEntryPojo updateBICDirectoryEntry(@RequestBody BICDirectoryEntryPojo bicDirectoryEntryPojo){
-        return bicDirectoryEntryService.updateBICDirectoryEntry(bicDirectoryEntryPojo);
+    @PutMapping("/{id}")
+    public BICDirectoryEntryPojo updateBICDirectoryEntry(@RequestBody BICDirectoryEntryPojo bicDirectoryEntryPojo, @PathVariable("id") long emailMessage_id){
+        return bicDirectoryEntryService.updateBICDirectoryEntry(bicDirectoryEntryPojo, emailMessage_id);
     }
 
-    @DeleteMapping ("/{bic}")
-    public void deleteBICDirectoryEntry(@PathVariable("bic") int bic){
-        bicDirectoryEntryService.deleteBICDirectoryEntry(bic);
+    @DeleteMapping ("/{id}")
+    public void deleteBICDirectoryEntry(@PathVariable("id") long id){
+        bicDirectoryEntryService.deleteBICDirectoryEntry(id);
     }
 }

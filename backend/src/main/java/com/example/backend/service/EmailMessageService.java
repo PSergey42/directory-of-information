@@ -1,5 +1,7 @@
 package com.example.backend.service;
 
+import com.example.backend.entity.EmailMessage;
+import com.example.backend.entity.model.BICDirectoryEntryPojo;
 import com.example.backend.entity.model.EmailMessagePojo;
 import com.example.backend.repository.EmailMessageRepository;
 import org.springframework.stereotype.Service;
@@ -16,21 +18,22 @@ public class EmailMessageService {
     }
 
     public List<EmailMessagePojo> findAll() {
-        return null;
+        return emailMessageRepository.findAll().stream().map(EmailMessagePojo::fromEntity).toList();
     }
 
-    public EmailMessagePojo getEmailMessageByNumber(long number) {
-        return null;
+    public EmailMessagePojo getEmailMessageByNumber(long id) {
+        return emailMessageRepository.findById(id).map(EmailMessagePojo::fromEntity).orElse(null);
     }
 
     public EmailMessagePojo addEmailMessage(EmailMessagePojo emailMessagePojo) {
-        return null;
+        return EmailMessagePojo.fromEntity(emailMessageRepository.save(EmailMessagePojo.toEntity(emailMessagePojo)));
     }
 
     public EmailMessagePojo updateEmailMessage(EmailMessagePojo emailMessagePojo) {
-        return null;
+        return addEmailMessage(emailMessagePojo);
     }
 
-    public void deleteEmailMessage(long number) {
+    public void deleteEmailMessage(long id) {
+        emailMessageRepository.deleteById(id);
     }
 }

@@ -17,6 +17,9 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Account {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlTransient
+    private long id;
     @XmlAttribute(name = "Account")
     private String accountNumber;
     @XmlAttribute(name = "RegulationAccountType")

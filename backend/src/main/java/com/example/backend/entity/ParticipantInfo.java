@@ -52,7 +52,7 @@ public class ParticipantInfo {
     private String participantStatus;
     @XmlTransient
     @OneToOne()
-    @JoinColumn(name = "bicDirectoryEntry_bic", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "bicDirectoryEntry_id", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
     private BICDirectoryEntry bicDirectoryEntry;
     @OneToMany(mappedBy = "participantInfo", cascade = CascadeType.ALL)
     @XmlElement(name = "RstrList", namespace="urn:cbr-ru:ed:v2.0")

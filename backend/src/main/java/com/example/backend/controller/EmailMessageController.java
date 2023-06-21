@@ -22,9 +22,9 @@ public class EmailMessageController {
         return emailMessageService.findAll();
     }
 
-    @GetMapping("/{number}")
-    public EmailMessagePojo getEmailMessageByNumber(@PathVariable("number") long number) {
-        return emailMessageService.getEmailMessageByNumber(number);
+    @GetMapping("/{id}")
+    public EmailMessagePojo getEmailMessageByNumber(@PathVariable("id") long id) {
+        return emailMessageService.getEmailMessageByNumber(id);
     }
 
     @PostMapping
@@ -37,8 +37,8 @@ public class EmailMessageController {
         return emailMessageService.updateEmailMessage(emailMessagePojo);
     }
 
-    @DeleteMapping ("/{number}")
-    public void deleteEmailMessage(@PathVariable("number") long number){
-        emailMessageService.deleteEmailMessage(number);
+    @DeleteMapping ("/{id}")
+    public void deleteEmailMessage(@PathVariable("id") long id){
+        emailMessageService.deleteEmailMessage(id);
     }
 }

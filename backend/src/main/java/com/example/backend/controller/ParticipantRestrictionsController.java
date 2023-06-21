@@ -23,22 +23,22 @@ public class ParticipantRestrictionsController {
     }
 
     @GetMapping("/{id}")
-    public ParticipantRestrictionsPojo getParticipantRestrictionsByID(@PathVariable("id") int id) {
+    public ParticipantRestrictionsPojo getParticipantRestrictionsByID(@PathVariable("id") long id) {
         return participantRestrictionsService.getParticipantRestrictionsByID(id);
     }
 
-    @PostMapping
-    public ParticipantRestrictionsPojo addParticipantRestrictions(@RequestBody ParticipantRestrictionsPojo participantRestrictionsPojo){
-        return participantRestrictionsService.addParticipantRestrictions(participantRestrictionsPojo);
+    @PostMapping("/{uid}")
+    public ParticipantRestrictionsPojo addParticipantRestrictions(@RequestBody ParticipantRestrictionsPojo participantRestrictionsPojo, @PathVariable("uid") long uid){
+        return participantRestrictionsService.addParticipantRestrictions(participantRestrictionsPojo, uid);
     }
 
-    @PutMapping
-    public ParticipantRestrictionsPojo updateParticipantRestrictions(@RequestBody ParticipantRestrictionsPojo participantRestrictionsPojo){
-        return participantRestrictionsService.updateParticipantRestrictions(participantRestrictionsPojo);
+    @PutMapping("/{uid}")
+    public ParticipantRestrictionsPojo updateParticipantRestrictions(@RequestBody ParticipantRestrictionsPojo participantRestrictionsPojo, @PathVariable("uid") long uid){
+        return participantRestrictionsService.updateParticipantRestrictions(participantRestrictionsPojo, uid);
     }
 
     @DeleteMapping ("/{id}")
-    public void deleteParticipantRestrictions(@PathVariable("id") int id){
+    public void deleteParticipantRestrictions(@PathVariable("id") long id){
         participantRestrictionsService.deleteParticipantRestrictions(id);
     }
 }

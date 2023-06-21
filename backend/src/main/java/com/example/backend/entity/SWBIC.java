@@ -17,6 +17,9 @@ import lombok.NoArgsConstructor;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SWBIC {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlTransient
+    private long id;
     @XmlAttribute(name = "SWBIC")
     private String swBIC;
     @XmlAttribute(name = "DefaultSWBIC")

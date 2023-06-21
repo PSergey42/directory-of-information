@@ -27,14 +27,14 @@ public class ParticipantInfoController {
         return participantInfoService.getParticipantInfoByUID(uid);
     }
 
-    @PostMapping
-    public ParticipantInfoPojo addParticipantInfo(@RequestBody ParticipantInfoPojo participantInfoPojo){
-        return participantInfoService.addParticipantInfo(participantInfoPojo);
+    @PostMapping("/{bic}")
+    public ParticipantInfoPojo addParticipantInfo(@RequestBody ParticipantInfoPojo participantInfoPojo, @PathVariable("bic") int bic){
+        return participantInfoService.addParticipantInfo(participantInfoPojo, bic);
     }
 
-    @PutMapping
-    public ParticipantInfoPojo updateParticipantInfo(@RequestBody ParticipantInfoPojo participantInfoPojo){
-        return participantInfoService.updateParticipantInfo(participantInfoPojo);
+    @PutMapping("/{bic}")
+    public ParticipantInfoPojo updateParticipantInfo(@RequestBody ParticipantInfoPojo participantInfoPojo, @PathVariable("bic") int bic){
+        return participantInfoService.updateParticipantInfo(participantInfoPojo, bic);
     }
 
     @DeleteMapping ("/{uid}")

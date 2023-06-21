@@ -22,19 +22,19 @@ public class AccountRestrictionsController {
         return accountRestrictionsService.findAll();
     }
 
-    @GetMapping("/accountRestrictions/{accountNumber}")
-    public AccountRestrictionsPojo getAccountRestrictionsByNumber(@PathVariable("accountNumber") String accountNumber) {
-        return accountRestrictionsService.getAccountRestrictionsByNumber(accountNumber);
+    @GetMapping("/accountRestrictions/{id}")
+    public AccountRestrictionsPojo getAccountRestrictionsByID(@PathVariable("id") long id) {
+        return accountRestrictionsService.getAccountRestrictionsByNumber(id);
     }
 
-    @PostMapping("/accountRestrictions")
-    public AccountRestrictionsPojo addAccountRestrictions(@RequestBody AccountRestrictionsPojo accountRestrictionsPojo){
-        return accountRestrictionsService.addAccountRestrictions(accountRestrictionsPojo);
+    @PostMapping("/accountRestrictions/{accountNumber}")
+    public AccountRestrictionsPojo addAccountRestrictions(@RequestBody AccountRestrictionsPojo accountRestrictionsPojo, @PathVariable("accountNumber") String accountNumber){
+        return accountRestrictionsService.addAccountRestrictions(accountRestrictionsPojo, accountNumber);
     }
 
-    @PutMapping("/accountRestrictions")
-    public AccountRestrictionsPojo updateAccountRestrictions(@RequestBody AccountRestrictionsPojo accountRestrictionsPojo){
-        return accountRestrictionsService.updateAccountRestrictions(accountRestrictionsPojo);
+    @PutMapping("/accountRestrictions/{accountNumber}")
+    public AccountRestrictionsPojo updateAccountRestrictions(@RequestBody AccountRestrictionsPojo accountRestrictionsPojo, @PathVariable("accountNumber") String accountNumber){
+        return accountRestrictionsService.updateAccountRestrictions(accountRestrictionsPojo, accountNumber);
     }
 
     @DeleteMapping ("/accountRestrictions/{id}")

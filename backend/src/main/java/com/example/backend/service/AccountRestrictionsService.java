@@ -1,6 +1,9 @@
 package com.example.backend.service;
 
+import com.example.backend.entity.Account;
+import com.example.backend.entity.AccountRestrictions;
 import com.example.backend.entity.model.AccountRestrictionsPojo;
+import com.example.backend.entity.model.SWBICPojo;
 import com.example.backend.repository.AccountRestrictionsRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +18,26 @@ public class AccountRestrictionsService {
     }
 
     public List<AccountRestrictionsPojo> findAll() {
-        return null;
+        return accountRestrictionsRepository.findAll().stream().map(AccountRestrictionsPojo::fromEntity).toList();
     }
 
-    public AccountRestrictionsPojo getAccountRestrictionsByNumber(String accountNumber) {
-        return null;
+    public AccountRestrictionsPojo getAccountRestrictionsByNumber(long id) {
+        return accountRestrictionsRepository.findById(id).map(AccountRestrictionsPojo::fromEntity).orElse(null);
     }
 
-    public AccountRestrictionsPojo addAccountRestrictions(AccountRestrictionsPojo accountRestrictionsPojo) {
-        return null;
+    public AccountRestrictionsPojo addAccountRestrictions(AccountRestrictionsPojo accountRestrictionsPojo, String accountNumber) {
+        Account account = new Account();
+        account.setAccountNumber(accountNumber);
+        AccountRestrictions accountRestrictions = AccountRestrictionsPojo.toEntity(accountRestrictionsPojo);
+        accountRestrictions.setAccount(account);
+        return AccountRestrictionsPojo.fromEntity(accountRestrictionsRepository.save(accountRestrictions));
     }
 
-    public AccountRestrictionsPojo updateAccountRestrictions(AccountRestrictionsPojo accountRestrictionsPojo) {
-        return null;
+    public AccountRestrictionsPojo updateAccountRestrictions(AccountRestrictionsPojo accountRestrictionsPojo, String accountNumber) {
+        return addAccountRestrictions(accountRestrictionsPojo, accountNumber);
     }
 
     public void deleteAccountRestrictions(long id) {
+        accountRestrictionsRepository.deleteById(id);
     }
 }

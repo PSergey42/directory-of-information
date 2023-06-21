@@ -22,24 +22,24 @@ public class AccountController {
         return accountService.findAll();
     }
 
-    @GetMapping("/account/{accountNumber}")
-    public AccountPojo getAccountByNumber(@PathVariable("accountNumber") String accountNumber) {
-        return accountService.getAccountByNumber(accountNumber);
+    @GetMapping("/account/{id}")
+    public AccountPojo getAccountByID(@PathVariable("id") long id) {
+        return accountService.getAccountByNumber(id);
     }
 
-    @PostMapping("/account")
-    public AccountPojo addAccount(@RequestBody AccountPojo accountPojo){
-        return accountService.addAccount(accountPojo);
+    @PostMapping("/account/{id}")
+    public AccountPojo addAccount(@RequestBody AccountPojo accountPojo, @PathVariable("id") long id){
+        return accountService.addAccount(accountPojo, id);
     }
 
-    @PutMapping("/account")
-    public AccountPojo updateAccount(@RequestBody AccountPojo accountPojo){
-        return accountService.updateAccount(accountPojo);
+    @PutMapping("/account/{id}")
+    public AccountPojo updateAccount(@RequestBody AccountPojo accountPojo, @PathVariable("id") long id){
+        return accountService.updateAccount(accountPojo, id);
     }
 
-    @DeleteMapping ("/account/{accountNumber}")
-    public void deleteAccount(@PathVariable("accountNumber") String accountNumber){
-        accountService.deleteAccount(accountNumber);
+    @DeleteMapping ("/account/{id}")
+    public void deleteAccount(@PathVariable("id") long id){
+        accountService.deleteAccount(id);
     }
 
 }

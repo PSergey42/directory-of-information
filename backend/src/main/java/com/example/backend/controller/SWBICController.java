@@ -22,23 +22,23 @@ public class SWBICController {
         return swbicService.findAll();
     }
 
-    @GetMapping("/{bic}")
-    public SWBICPojo getSWBICByBIC(@PathVariable("bic") String bic) {
-        return swbicService.getSWBICByBIC(bic);
+    @GetMapping("/{id}")
+    public SWBICPojo getSWBICByID(@PathVariable("id") long id) {
+        return swbicService.getSWBICByID(id);
     }
 
-    @PostMapping
-    public SWBICPojo addSWBIC(@RequestBody SWBICPojo swbicPojo){
-        return swbicService.addSWBIC(swbicPojo);
+    @PostMapping("/{id}")
+    public SWBICPojo addSWBIC(@RequestBody SWBICPojo swbicPojo, @PathVariable("id") long id){
+        return swbicService.addSWBIC(swbicPojo, id);
     }
 
-    @PutMapping
-    public SWBICPojo updateSWBIC(@RequestBody SWBICPojo swbicPojo){
-        return swbicService.updateSWBIC(swbicPojo);
+    @PutMapping("/{id}")
+    public SWBICPojo updateSWBIC(@RequestBody SWBICPojo swbicPojo, @PathVariable("id") long id){
+        return swbicService.updateSWBIC(swbicPojo, id);
     }
 
-    @DeleteMapping ("/{bic}")
-    public void deleteSWBIC(@PathVariable("bic") String bic){
-        swbicService.deleteSWBIC(bic);
+    @DeleteMapping ("/{id}")
+    public void deleteSWBIC(@PathVariable("id") long id){
+        swbicService.deleteSWBIC(id);
     }
 }
