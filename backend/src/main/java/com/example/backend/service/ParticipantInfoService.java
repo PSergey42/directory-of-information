@@ -3,7 +3,6 @@ package com.example.backend.service;
 import com.example.backend.entity.BICDirectoryEntry;
 import com.example.backend.entity.ParticipantInfo;
 import com.example.backend.entity.model.ParticipantInfoPojo;
-import com.example.backend.entity.model.SWBICPojo;
 import com.example.backend.repository.ParticipantInfoRepository;
 import org.springframework.stereotype.Service;
 

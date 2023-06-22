@@ -18,7 +18,7 @@ import java.util.Date;
 @Table(
         name = "accountRestrictions",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"account_number", "accRSTR"})
+                @UniqueConstraint(columnNames = {"account_id", "accRSTR"})
         }
 )
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -28,7 +28,7 @@ public class AccountRestrictions {
     private long id;
     @XmlTransient
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_number", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "account_id", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
     private Account account;
     @XmlAttribute(name = "AccRstr")
     private String accRSTR;

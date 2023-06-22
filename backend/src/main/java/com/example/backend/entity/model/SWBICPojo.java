@@ -12,6 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SWBICPojo {
+    private long id;
     private String swBIC;
     private boolean defaultSWBIC;
     public static SWBIC toEntity(SWBICPojo swbicPojo) {

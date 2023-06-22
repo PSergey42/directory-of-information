@@ -6,6 +6,7 @@ import com.example.backend.entity.ParticipantInfo;
 import com.example.backend.repository.EmailMessageRepository;
 import com.example.backend.util.JaxbWorker;
 import jakarta.transaction.Transactional;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
